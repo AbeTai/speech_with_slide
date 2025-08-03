@@ -15,4 +15,6 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "google-genai>=0.8.0",
     "pyyaml>=6.0",
+    "python-pptx>=1.0.2",
+    "ipykernel>=6.29.5",
 ]
