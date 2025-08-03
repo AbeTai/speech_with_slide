@@ -1,41 +1,4 @@
-script_generation:
-  system_prompt: |
-    あなたは優秀なプレゼンテーション原稿作成の専門家です。
-    スライドの内容を分析し、聞き手にとって分かりやすい原稿を作成してください。
-  
-  user_prompt: |
-    このPDFの{page_num}ページ目の内容を説明するプレゼンテーション原稿を日本語で作成してください。
-    
-    以下の要件に従ってください：
-    - 自然な話し言葉で書いてください
-    - **スライドに書いてある内容だけ簡潔に説明してください。冗長な原稿を絶対に作らないでください。**
-    - 聞き手にとって分かりやすい表現を使ってください
-    - 原稿のみを出力し、余計な説明は不要です
-    
-    【補足指示】
-    - 箇条書きの項目は「まず...」「次に...」「最後に...」などの接続詞を使って自然に説明してください
-    - 数字やデータがある場合は、その意味や重要性を簡潔に説明してください
-    - 図表やグラフがある場合は、そのポイントを分かりやすく説明してください
-
 model_config:
-  claude:
-    model: "claude-3-7-sonnet-20250219"
-    max_tokens: 1000
-    temperature: 0.1
-  
   gemini_tts:
     model: "gemini-2.5-flash-preview-tts"
     voice_name: "Kore"
-    voice_speed: 1.0
-    voice_pitch: 1.0
-
-customization:
-  presentation_style:
-    tone: "professional"  # professional, casual, academic
-    pace: "normal"        # slow, normal, fast
-    emphasis: "key_points" # key_points, all_content, minimal
-  
-  script_length:
-    target_words_per_minute: 150
-    max_words_per_slide: 200
-    min_words_per_slide: 50

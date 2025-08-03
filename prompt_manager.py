@@ -38,45 +38,12 @@ class PromptManager:
             logger.error(f"Error parsing YAML config: {e}")
             raise
     
-    def get_script_generation_prompts(self, page_num: int) -> Dict[str, str]:
-        """
-        原稿生成用のプロンプトを取得
-        
-        Args:
-            page_num: ページ番号
-            
-        Returns:
-            system_promptとuser_promptを含む辞書
-        """
-        script_config = self.config.get("script_generation", {})
-        
-        system_prompt = script_config.get("system_prompt", "")
-        user_prompt = script_config.get("user_prompt", "").format(page_num=page_num)
-        
-        return {
-            "system_prompt": system_prompt,
-            "user_prompt": user_prompt
-        }
     
-    def get_claude_config(self) -> Dict[str, Any]:
-        """Claude APIの設定を取得"""
-        return self.config.get("model_config", {}).get("claude", {})
     
     def get_gemini_tts_config(self) -> Dict[str, Any]:
         """Gemini TTSの設定を取得"""
         return self.config.get("model_config", {}).get("gemini_tts", {})
     
-    def get_customization_config(self) -> Dict[str, Any]:
-        """カスタマイゼーション設定を取得"""
-        return self.config.get("customization", {})
-    
-    def get_presentation_style(self) -> Dict[str, str]:
-        """プレゼンテーションスタイルの設定を取得"""
-        return self.get_customization_config().get("presentation_style", {})
-    
-    def get_script_length_config(self) -> Dict[str, int]:
-        """原稿の長さに関する設定を取得"""
-        return self.get_customization_config().get("script_length", {})
     
     def update_config(self, new_config: Dict[str, Any]) -> None:
         """
